@@ -42,7 +42,7 @@ The remote `origin` is set to `https://github.com/zwilliams/cursor-web-research.
 
    If `origin` already exists with a bad URL, remove it first: `git remote remove origin`.
 
-3. As in option A, commit a README follow-up with your real `raw.githubusercontent.com/...` owner name so the one-liner works for others.
+3. As in option A, commit a README follow-up with your real `raw.githubusercontent.com/.../owner/.../main/install.sh` so the one-liner works for others. (The maintained repo is `zwilliams3/cursor-web-research`.)
 
 ## After publishing
 
