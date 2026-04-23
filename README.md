@@ -64,7 +64,7 @@ Read the full rulebook in [`skills/web-research/SKILL.md`](skills/web-research/S
 
 ## Headless vs. headed
 
-By default the browser is **visible** (`--headless=false` in `mcp.json.example`) so you can watch the agent work. Once you trust it, flip to headless for faster, quieter runs — edit `~/.cursor/mcp.json` and change `--headless=false` to `--headless=true` (or remove the flag entirely; headless is Playwright's default).
+Playwright MCP runs a **visible (headed) browser by default** — no extra flags. For headless mode, add a single **boolean** flag: `"--headless"` to the `args` array in `~/.cursor/mcp.json` (the CLI does not support `--headless=false` or similar; that form causes `unknown option`).
 
 ## Troubleshooting
 

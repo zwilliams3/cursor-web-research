@@ -51,7 +51,9 @@ ok "Chromium installed."
 
 # --- 3. Merge mcp.json --------------------------------------------------------
 
-PLAYWRIGHT_ENTRY='{"command":"npx","args":["@playwright/mcp@latest","--headless=false"]}'
+# Headed (visible) browser is @playwright/mcp's default. Only pass "--headless"
+# for headless—there is no --headless=false; that flag is rejected by the CLI.
+PLAYWRIGHT_ENTRY='{"command":"npx","args":["@playwright/mcp@latest"]}'
 
 if [ ! -f "$MCP_FILE" ]; then
   log "Creating $MCP_FILE."
