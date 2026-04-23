@@ -22,9 +22,11 @@ Thanks for helping improve this small installer and skill.
 
 2. On your own Mac, re-run `./install.sh` and confirm `~/.cursor/mcp.json` still merges correctly and your backup is created.
 
-3. Restart Cursor and verify **Settings → MCP** shows `playwright` healthy, then run a one-line "research X" in chat.
+3. From the repo: `./scripts/verify-install.sh` and optionally `./scripts/smoke-browser.sh`.
 
-4. Uninstall: `./uninstall.sh` and confirm the `playwright` key is removed from `mcp.json`.
+4. Restart Cursor and verify **Settings → MCP** shows `playwright` healthy, then run a one-line "research X" in chat.
+
+5. Uninstall: `./uninstall.sh` and confirm the `playwright` key is removed from `mcp.json`.
 
 ## Pull requests
 

@@ -35,7 +35,20 @@ cd cursor-web-research
 
 ### Optional: add the MCP server only (manual)
 
-If you already manage `~/.cursor/mcp.json` by hand, copy the block from [`mcp.json.example`](mcp.json.example) into `mcpServers` (merge with your existing servers). In Cursor: **Settings → Features → Model Context Protocol → Edit in settings** (or the MCP panel, depending on your Cursor version) and ensure `playwright` is listed. Official Playwright docs: [Playwright MCP](https://playwright.dev/docs/getting-started-mcp).
+If you already manage `~/.cursor/mcp.json` by hand, copy the block from [`mcp.json.example`](mcp.json.example) into `mcpServers` (merge with your existing servers). In Cursor: **Settings → Features → Model Context Protocol → Edit in settings** (or the MCP panel, depending on your Cursor version) and ensure `playwright` is listed.
+
+You can also follow Microsoft’s flow to add Playwright MCP from the docs (including Cursor-specific install): [Playwright MCP — getting started](https://playwright.dev/docs/getting-started-mcp).
+
+### Optional: automated checks (terminal)
+
+From a clone of this repo (after `./install.sh` or with your real `HOME`):
+
+```bash
+./scripts/verify-install.sh   # checks Node, jq, ~/.cursor/mcp.json, skill, npx @playwright/mcp --help
+./scripts/smoke-browser.sh    # proves Playwright can launch Chromium and load example.com
+```
+
+`verify-install.sh` does not replace the in-app check: in **Settings → MCP**, the `playwright` server should still be green with ~20 tools.
 
 Then:
 
@@ -63,8 +76,9 @@ Add a short screen recording or screenshot here: Cursor chat asking *“research
 
 ## After install: verify (checklist)
 
-1. **MCP** — **Settings → MCP** → `playwright` is green, ~20 tools (e.g. `browser_navigate`, `browser_snapshot`, `browser_tab_new`).
-2. **Smoke test** — In chat: *“Research the latest @playwright/mcp release notes and cite your sources.”* You should see the browser work and a markdown summary with URLs.
+1. **MCP (in Cursor)** — **Settings → MCP** → `playwright` is green, ~20 tools (e.g. `browser_navigate`, `browser_snapshot`, `browser_tab_new`). Run `./scripts/verify-install.sh` in a terminal to sanity-check config files and the MCP CLI.
+2. **Browser stack (optional)** — `./scripts/smoke-browser.sh` confirms Playwright can drive Chromium for a public URL outside the agent.
+3. **End-to-end (in Cursor chat)** — *“Research the latest @playwright/mcp release notes and cite your sources.”* You should see the browser work and a markdown summary with URLs.
 
 ## How the agent uses it
 
