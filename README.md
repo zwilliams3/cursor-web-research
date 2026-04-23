@@ -17,10 +17,10 @@ Requires macOS or Linux, [Node.js](https://nodejs.org) >= 18, and `jq` (`brew in
 
 ### One-line install (from GitHub)
 
-After this repo is on your account, you can run (replace `YOUR_GH_USERNAME` with your GitHub user or org):
+One-line install (this published repo — fork or replace the owner if you use a fork):
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YOUR_GH_USERNAME/cursor-web-research/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/zwilliams3/cursor-web-research/main/install.sh | bash
 ```
 
 To pin a version, use a tag or commit SHA in place of `main` in the URL.
@@ -28,7 +28,7 @@ To pin a version, use a tag or commit SHA in place of `main` in the URL.
 ### Or clone, then run the script
 
 ```bash
-git clone https://github.com/YOUR_GH_USERNAME/cursor-web-research.git
+git clone https://github.com/zwilliams3/cursor-web-research.git
 cd cursor-web-research
 ./install.sh
 ```
