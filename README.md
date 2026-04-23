@@ -2,6 +2,8 @@
 
 Give the Cursor agent the ability to **open browser tabs, click around, and research the web on its own**.
 
+**Publish to GitHub:** if you are the maintainer pushing this repository for the first time, see [PUBLISH.md](PUBLISH.md) (or run `./scripts/first-push.sh` after `gh auth login`).
+
 It glues together two things:
 
 1. [Microsoft's official Playwright MCP server](https://github.com/microsoft/playwright-mcp) — a real Chromium browser the agent can drive (navigate, click, type, snapshot pages, manage tabs).
