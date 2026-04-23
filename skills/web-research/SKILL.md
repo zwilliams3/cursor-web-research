@@ -136,8 +136,9 @@ citable URL, say so explicitly instead of inventing one.
   visit is usually enough.
 - Do **not** copy giant page dumps into the chat; extract the relevant parts.
 - Do **not** leave the browser with 10+ open tabs when the task is done.
-- Do **not** escalate headless/headful or other MCP flags mid-task; if the
-  server is misconfigured, stop and tell the user.
+- Do **not** escalate headless/headed or other MCP flags mid-task; if the
+  server is misconfigured, stop and tell the user. (MCP only supports `--headless`
+  for headless; headed is the default—there is no `--headless=false`.)
 
 ## Quick examples
 
