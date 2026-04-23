@@ -13,11 +13,27 @@ Installed once per Mac, available in every Cursor project.
 
 Requires macOS or Linux, [Node.js](https://nodejs.org) >= 18, and `jq` (`brew install jq` on macOS).
 
+### One-line install (from GitHub)
+
+After this repo is on your account, you can run (replace `YOUR_GH_USERNAME` with your GitHub user or org):
+
 ```bash
-git clone https://github.com/<YOUR_GH_USERNAME>/cursor-web-research.git
+curl -fsSL https://raw.githubusercontent.com/YOUR_GH_USERNAME/cursor-web-research/main/install.sh | bash
+```
+
+To pin a version, use a tag or commit SHA in place of `main` in the URL.
+
+### Or clone, then run the script
+
+```bash
+git clone https://github.com/YOUR_GH_USERNAME/cursor-web-research.git
 cd cursor-web-research
 ./install.sh
 ```
+
+### Optional: add the MCP server only (manual)
+
+If you already manage `~/.cursor/mcp.json` by hand, copy the block from [`mcp.json.example`](mcp.json.example) into `mcpServers` (merge with your existing servers). In Cursor: **Settings → Features → Model Context Protocol → Edit in settings** (or the MCP panel, depending on your Cursor version) and ensure `playwright` is listed. Official Playwright docs: [Playwright MCP](https://playwright.dev/docs/getting-started-mcp).
 
 Then:
 
@@ -38,6 +54,15 @@ Then:
 | `~/Library/Caches/ms-playwright/...` | Chromium build Playwright drives (downloaded once, ~260 MB). |
 
 No project files are touched.
+
+## Demo (screenshot or GIF)
+
+Add a short screen recording or screenshot here: Cursor chat asking *“research the latest Playwright MCP feature”* with Chromium window visible, then a cited summary in the thread. (Placeholder for the maintainer; optional for contributors.)
+
+## After install: verify (checklist)
+
+1. **MCP** — **Settings → MCP** → `playwright` is green, ~20 tools (e.g. `browser_navigate`, `browser_snapshot`, `browser_tab_new`).
+2. **Smoke test** — In chat: *“Research the latest @playwright/mcp release notes and cite your sources.”* You should see the browser work and a markdown summary with URLs.
 
 ## How the agent uses it
 
@@ -88,3 +113,7 @@ Removes the `playwright` entry from `~/.cursor/mcp.json` and deletes the skill. 
 ## Credits
 
 - [microsoft/playwright-mcp](https://github.com/microsoft/playwright-mcp) — does all the heavy lifting. This repo is just a one-command wrapper plus the agent-steering skill.
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md).
