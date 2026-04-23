@@ -11,6 +11,8 @@ description: >-
 
 # Web research skill
 
+**Repository:** this file ships with [cursor-web-research](https://github.com/zwilliams3/cursor-web-research). Sibling entry point: **`/research`** → see [`skills/research/SKILL.md`](https://github.com/zwilliams3/cursor-web-research/blob/main/skills/research/SKILL.md) in the same repo (same workflow).
+
 Turns the browser-automation tools from the `playwright` MCP server into a
 reliable, self-driving research loop. Without this skill the tools exist but
 the agent has to be nudged click-by-click; with it, "research X" becomes a

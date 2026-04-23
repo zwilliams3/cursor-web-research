@@ -7,7 +7,11 @@ Give the Cursor agent the ability to **open browser tabs, click around, and rese
 It glues together two things:
 
 1. [Microsoft's official Playwright MCP server](https://github.com/microsoft/playwright-mcp) — a real Chromium browser the agent can drive (navigate, click, type, snapshot pages, manage tabs).
-2. A global Cursor **skill** that teaches the agent *when* and *how* to use those tools so "research X" becomes a one-shot behavior with a proper research loop, tab budget, safety rails, and a cited summary at the end.
+2. Two global Cursor **skills** from this repo, both teaching the *same* Playwright workflow:
+   - **`web-research`** — full rules and loops ([`skills/web-research/SKILL.md`](skills/web-research/SKILL.md))
+   - **`research`** — the **`/research`** entry point, explicitly tied to this project ([`skills/research/SKILL.md`](skills/research/SKILL.md))
+
+   Together they make "research X" (or `/research ...`) a one-shot behavior with a proper research loop, tab budget, safety rails, and a cited summary at the end.
 
 Installed once per Mac, available in every Cursor project.
 
@@ -65,7 +69,8 @@ Then:
 | Path | What it is |
 | --- | --- |
 | `~/.cursor/mcp.json` | Registers the `playwright` server. Existing entries are preserved (the installer merges via `jq` and keeps a `.bak.<timestamp>` backup). |
-| `~/.cursor/skills/web-research/SKILL.md` | Global skill the Cursor agent picks up automatically when you ask it to research something. |
+| `~/.cursor/skills/web-research/SKILL.md` | Full research skill (triggers, loop, budgets, safety, citations). |
+| `~/.cursor/skills/research/SKILL.md` | **`/research`** skill — same workflow, explicitly linked to this repository. |
 | `~/Library/Caches/ms-playwright/...` | Chromium build Playwright drives (downloaded once, ~260 MB). |
 
 No project files are touched.

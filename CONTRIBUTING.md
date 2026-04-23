@@ -17,6 +17,7 @@ Thanks for helping improve this small installer and skill.
    HOME="$FAKE_HOME" bash ./install.sh
    cat "$FAKE_HOME/.cursor/mcp.json"
    ls "$FAKE_HOME/.cursor/skills/web-research/"
+   ls "$FAKE_HOME/.cursor/skills/research/"
    rm -rf "$FAKE_HOME"
    ```
 

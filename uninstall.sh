@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Remove the 'playwright' MCP server from ~/.cursor/mcp.json and delete the
-# web-research skill. Leaves the Playwright browser cache in place since it
-# may be used by other tools.
+# web-research and research skills from this project. Leaves the Playwright
+# browser cache in place since it may be used by other tools.
 
 set -euo pipefail
 
@@ -14,7 +14,8 @@ die()  { printf '%s[cursor-web-research]%s %s\n' "$RED" "$NC" "$*" >&2; exit 1; 
 command -v jq >/dev/null 2>&1 || die "jq is required."
 
 MCP_FILE="${HOME}/.cursor/mcp.json"
-SKILL_DIR="${HOME}/.cursor/skills/web-research"
+SKILL_WEB_DIR="${HOME}/.cursor/skills/web-research"
+SKILL_RESEARCH_DIR="${HOME}/.cursor/skills/research"
 
 if [ -f "$MCP_FILE" ]; then
   BACKUP="${MCP_FILE}.bak.$(date +%s)"
@@ -28,11 +29,18 @@ else
   warn "$MCP_FILE does not exist, skipping."
 fi
 
-if [ -d "$SKILL_DIR" ]; then
-  rm -rf "$SKILL_DIR"
-  ok "Removed $SKILL_DIR."
+if [ -d "$SKILL_WEB_DIR" ]; then
+  rm -rf "$SKILL_WEB_DIR"
+  ok "Removed $SKILL_WEB_DIR."
 else
-  warn "$SKILL_DIR does not exist, skipping."
+  warn "$SKILL_WEB_DIR does not exist, skipping."
+fi
+
+if [ -d "$SKILL_RESEARCH_DIR" ]; then
+  rm -rf "$SKILL_RESEARCH_DIR"
+  ok "Removed $SKILL_RESEARCH_DIR."
+else
+  warn "$SKILL_RESEARCH_DIR does not exist, skipping."
 fi
 
 cat <<EOF

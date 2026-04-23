@@ -8,7 +8,8 @@ die()  { echo "FAIL: $*" >&2; ERR=1; }
 pass() { echo "OK:   $*"; }
 
 CURSOR_MCP="${HOME}/.cursor/mcp.json"
-SKILL="${HOME}/.cursor/skills/web-research/SKILL.md"
+SKILL_WEB="${HOME}/.cursor/skills/web-research/SKILL.md"
+SKILL_RESEARCH="${HOME}/.cursor/skills/research/SKILL.md"
 
 command -v node >/dev/null || { die "Node.js not found"; exit 1; }
 NODE_MAJOR=$(node -v | sed 's/^v//' | cut -d. -f1)
@@ -20,8 +21,10 @@ command -v jq >/dev/null && pass "jq present" || die "jq not found ( brew instal
 jq -e '(.mcpServers.playwright.args // [] | map(.) | join(" ")) | test("@playwright/mcp")' "$CURSOR_MCP" >/dev/null 2>&1 && \
   pass "mcp.json contains @playwright/mcp" || die "mcp.json missing playwright / @playwright/mcp in args"
 
-[ -f "$SKILL" ] && pass "Global skill at ~/.cursor/skills/web-research/SKILL.md" || \
-  die "Missing skill: run install.sh or copy from repo"
+[ -f "$SKILL_WEB" ] && pass "Global skill: ~/.cursor/skills/web-research/SKILL.md" || \
+  die "Missing web-research skill: run install.sh or copy from repo"
+[ -f "$SKILL_RESEARCH" ] && pass "Global skill: ~/.cursor/skills/research/SKILL.md (/research)" || \
+  die "Missing research skill: run install.sh or copy from repo"
 
 if npx --yes @playwright/mcp@latest --help 2>&1 | grep -qE 'version|headless|Options'; then
   pass "npx can run @playwright/mcp@latest --help (CLI available)"

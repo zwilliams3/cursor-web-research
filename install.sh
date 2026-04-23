@@ -5,8 +5,8 @@
 #   1. Registering Microsoft's official Playwright MCP server in
 #      ~/.cursor/mcp.json (merging, never clobbering).
 #   2. Installing the Chromium browser Playwright drives.
-#   3. Dropping a global skill at ~/.cursor/skills/web-research/SKILL.md
-#      that teaches the Cursor agent how to research autonomously.
+#   3. Dropping global skills at ~/.cursor/skills/web-research and
+#      ~/.cursor/skills/research (the /research entry for this repo).
 #
 # Idempotent: safe to re-run.
 
@@ -35,13 +35,16 @@ ok "Node $(node -v), npx $(npx -v), jq $(jq --version) detected."
 
 CURSOR_DIR="${HOME}/.cursor"
 MCP_FILE="${CURSOR_DIR}/mcp.json"
-SKILLS_DIR="${CURSOR_DIR}/skills/web-research"
+SKILLS_WEB_DIR="${CURSOR_DIR}/skills/web-research"
+SKILLS_RESEARCH_DIR="${CURSOR_DIR}/skills/research"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-SKILL_SRC="${SCRIPT_DIR}/skills/web-research/SKILL.md"
+SKILL_WEB_SRC="${SCRIPT_DIR}/skills/web-research/SKILL.md"
+SKILL_RESEARCH_SRC="${SCRIPT_DIR}/skills/research/SKILL.md"
 
-[ -f "$SKILL_SRC" ] || die "Cannot find $SKILL_SRC. Run install.sh from the repo root."
+[ -f "$SKILL_WEB_SRC" ] || die "Cannot find $SKILL_WEB_SRC. Run install.sh from the repo root."
+[ -f "$SKILL_RESEARCH_SRC" ] || die "Cannot find $SKILL_RESEARCH_SRC. Run install.sh from the repo root."
 
-mkdir -p "$CURSOR_DIR" "$SKILLS_DIR"
+mkdir -p "$CURSOR_DIR" "$SKILLS_WEB_DIR" "$SKILLS_RESEARCH_DIR"
 
 # --- 2. Install Chromium for Playwright --------------------------------------
 
@@ -75,10 +78,13 @@ else
   die "Failed to update $MCP_FILE. Your backup is at $BACKUP."
 fi
 
-# --- 4. Install the skill -----------------------------------------------------
+# --- 4. Install the skills (cursor-web-research) ------------------------------
 
-cp "$SKILL_SRC" "${SKILLS_DIR}/SKILL.md"
-ok "Installed skill at ${SKILLS_DIR}/SKILL.md."
+cp "$SKILL_WEB_SRC" "${SKILLS_WEB_DIR}/SKILL.md"
+ok "Installed web-research skill at ${SKILLS_WEB_DIR}/SKILL.md."
+
+cp "$SKILL_RESEARCH_SRC" "${SKILLS_RESEARCH_DIR}/SKILL.md"
+ok "Installed /research skill at ${SKILLS_RESEARCH_DIR}/SKILL.md."
 
 # --- 5. Next steps ------------------------------------------------------------
 
@@ -89,7 +95,7 @@ ${GREEN}Done.${NC} Next steps:
   1. Quit and reopen Cursor (or reload the MCP config from Settings -> MCP).
   2. Open Cursor Settings -> MCP. You should see 'playwright' listed with a
      green status and around 20 tools (browser_navigate, browser_click, ...).
-  3. In any chat, ask the agent: "research the latest Playwright MCP release".
+  3. In any chat, use /research or ask: "research the latest Playwright MCP release".
      It should open Chromium, read a couple of pages, and return a cited
      summary.
 
