@@ -25,8 +25,8 @@ This skill is **part of the [cursor-web-research](https://github.com/zwilliams3/
 ## When the user types /research
 
 1. **Topic** is everything after `/research` (or the user’s follow-up in the same thread). If empty, ask what they want researched.
-2. **Execute** the standard research loop using the `playwright` MCP tools, exactly as defined in the **web-research** skill: navigate → snapshot → new tabs for top results → read → close → **cited markdown summary**.
-3. If Playwright tools are missing, tell the user to run the [install](https://github.com/zwilliams3/cursor-web-research#quickstart) and restart Cursor, then check **Settings → MCP**.
+2. **Execute** the standard research loop per **web-research**: success criteria, pre-flight (or fallback), loop, budgets, safety, output format.
+3. If Playwright tools are missing, follow **web-research** fallback (search + URL fetch + labeled caveats) and/or point the user at the [install](https://github.com/zwilliams3/cursor-web-research#quickstart) and **Settings → MCP**.
 
 ## Do not
 
